@@ -1,0 +1,18 @@
+
+  [32m[1mVITE[22m v6.4.3[39m  [2mready in [0m[1m516[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m3000[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.4.96:[1m3000[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m9:54:24 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/RiskBadge.jsx[22m
+[2m9:54:27 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/TrustScore.jsx[22m
+[2m9:54:35 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/pages/Result.jsx[22m
+[2m10:17:23 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/ImageAnalyzer.jsx[22m
+[2m10:17:46 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/context/AuthContext.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/pages/AnalyzeJob.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/pages/Dashboard.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/pages/Result.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/pages/Profile.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/pages/History.jsx[22m
+[2m10:17:46 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/context/AuthContext.jsx[22m Could not Fast Refresh ("useAuth" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m10:17:46 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/App.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/components/Navbar.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/components/ProtectedRoute.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/pages/Register.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/pages/Dashboard.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/pages/Profile.jsx, /@fs/C:/Users/DELL/Downloads/hireguard/src/pages/Login.jsx[22m
+[2m10:17:50 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/pages/AnalyzeJob.jsx[22m
+[2m10:18:05 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/VoiceRecorder.jsx[22m
+[2m10:18:17 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/VoiceAnalyzer.jsx[22m
+[2m10:31:00 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/VoiceAnalyzer.jsx[22m
+[2m10:31:08 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/VoiceAnalyzer.jsx[22m
