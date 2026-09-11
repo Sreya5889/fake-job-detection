@@ -16,3 +16,753 @@
 [2m10:18:17 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/VoiceAnalyzer.jsx[22m
 [2m10:31:00 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/VoiceAnalyzer.jsx[22m
 [2m10:31:08 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:/Users/DELL/Downloads/hireguard/src/components/VoiceAnalyzer.jsx[22m
+[2m11:12:59 am[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[31mfailed to load config from c:\Users\DELL\Downloads\hireguard\vite.config.js[39m
+[2m11:12:59 am[22m [31m[1m[vite][22m[39m config must export or return an object.
+[2m11:12:59 am[22m [31m[1m[vite][22m[39m server restart failed
+[2m11:13:06 am[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+[2m11:13:07 am[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because lockfile has changed
+[2m11:13:07 am[22m [36m[1m[vite][22m[39m server restarted.
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m3000[22m/fake-job-detection/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.4.96:[1m3000[22m/fake-job-detection/[39m
+[2m11:13:08 am[22m [36m[1m[vite][22m[39m [32mvite.config.js changed, restarting server...[39m
+Error: [31m  Failed to scan for dependencies from entries:
+  c:/Users/DELL/Downloads/hireguard/index.html
+
+  [39m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:8:17:
+[37m      8 │ import Home from [32m'./pages/Home'[37m;
+        ╵                  [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:9:18:
+[37m      9 │ import Login from [32m'./pages/Login'[37m;
+        ╵                   [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:10:21:
+[37m      10 │ import Register from [32m'./pages/Register'[37m;
+         ╵                      [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:11:22:
+[37m      11 │ import Dashboard from [32m'./pages/Dashboard'[37m;
+         ╵                       [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:12:23:
+[37m      12 │ import AnalyzeJob from [32m'./pages/AnalyzeJob'[37m;
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:13:19:
+[37m      13 │ import Result from [32m'./pages/Result'[37m;
+         ╵                    [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:14:20:
+[37m      14 │ import History from [32m'./pages/History'[37m;
+         ╵                     [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:15:20:
+[37m      15 │ import Profile from [32m'./pages/Profile'[37m;
+         ╵                     [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:18:29:
+[37m      18 │ import { AuthProvider } from [32m'./context/AuthContext'[37m;
+         ╵                              [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/App.jsx:19:30:
+[37m      19 │ import { ToastProvider } from [32m'./context/ToastContext'[37m;
+         ╵                               [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/components/ProtectedRoute.jsx:3:24:
+[37m      3 │ import { useAuth } from [32m'../context/AuthContext'[37m;
+        ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14490:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14478:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/components/Footer.jsx:3:53:
+[37m      3 │ import { ShieldCheck, ShieldAlert, Cpu, Heart } from [32m'lucide-react'[37m;
+        ╵                                                      [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/components/ProtectedRoute.jsx:4:31:
+[37m      4 │ import { LoadingSpinner } from [32m'./LoadingSpinner'[37m;
+        ╵                                [32m~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14490:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14478:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/components/Navbar.jsx:3:100:
+[37m      3 │ ...outDashboard, History as HistoryIcon, Search } from [32m'lucide-react'[37m;
+        ╵                                                        [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/components/Navbar.jsx:4:24:
+[37m      4 │ import { useAuth } from [32m'../context/AuthContext'[37m;
+        ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mThe server is being restarted or closed. Request is outdated[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1217:27:
+[37m      1217 │         let result = await [32m[37mcallback({
+           ╵                            [32m^[0m
+
+    at throwClosedServerError (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42185:15)
+    at EnvironmentPluginContainer.resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:42364:9)
+    at resolveId (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14314:40)
+    at resolve (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14325:28)
+    at file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14534:34
+    at requestCallbacks.on-resolve (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1217:28)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+  This error came from the "onResolve" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14529:13)
+    at handlePlugins (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1141:21)
+    at buildOrContextImpl (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:854:5)
+    at Object.buildOrContext (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:680:5)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:2035:27)
+    at Object.context (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1877:58)
+    at prepareEsbuildScanner (file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:14266:24)
+    at async file:///c:/Users/DELL/Downloads/hireguard/node_modules/vite/dist/node/chunks/dep-Dm0c1Wj2.js:47144:28
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    src/components/Navbar.jsx:5:25:
+[37m      5 │ import { useToast } from [32m'../context/ToastContext'[37m;
+        ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+    at failureErrorWithLog (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1467:15)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:926:25
+    at runOnEndCallbacks (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:1307:45)
+    at buildResponseToResult (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:924:7)
+    at c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:936:9
+    at new Promise (<anonymous>)
+    at requestCallbacks.on-end (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:935:54)
+    at handleRequest (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:628:17)
+    at handleIncomingPacket (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:653:7)
+    at Socket.readFromStdout (c:\Users\DELL\Downloads\hireguard\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:509:28)
+    at addChunk (node:internal/streams/readable:563:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:514:3)
+    at Readable.push (node:internal/streams/readable:394:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+[2m11:13:08 am[22m [36m[1m[vite][22m[39m server restarted.
