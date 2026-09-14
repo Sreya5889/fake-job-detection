@@ -3,7 +3,7 @@
  * Communicates with the Node.js + Express backend at http://localhost:5000/api
  */
 
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://fake-job-detection-4ezv.onrender.com/api';
 
 /**
  * Generic Fetch wrapper with JSON parsing and Authorization header
