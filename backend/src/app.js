@@ -17,15 +17,8 @@ const app = express();
 // Trust reverse proxies (Render, Cloudflare, Vercel) for accurate client IP detection
 app.set('trust proxy', 1);
 
-// Security Headers with Helmet (configured for cross-origin API access)
-app.use(
-  helmet({
-    crossOriginResourcePolicy: { policy: 'cross-origin' }
-  })
-);
-
 // Cross-Origin Resource Sharing (CORS) Configuration
-// Allows Vercel, Render, Localhost, and configured frontend origins
+// Allows Vercel, Render, Localhost, and any client origins
 const allowedOrigins = [
   env.FRONTEND_URL,
   'http://localhost:3000',
@@ -39,23 +32,36 @@ const isOriginAllowed = (origin) => {
   if (!origin) return true;
   // Always allow during development
   if (env.NODE_ENV === 'development') return true;
-  // Allow any Vercel domain (production and preview branches)
-  if (origin.endsWith('.vercel.app') || /^https:\/\/([a-z0-9-]+-)*[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
-    return true;
+
+  try {
+    const hostname = new URL(origin).hostname;
+
+    // Allow localhost / 127.0.0.1 on any port
+    if (hostname === 'localhost' || hostname === '127.0.0.1') return true;
+
+    // Allow all Vercel domains (production, preview branches, deployment URLs)
+    if (hostname.endsWith('.vercel.app') || hostname === 'vercel.app') return true;
+
+    // Allow Render domains
+    if (hostname.endsWith('.onrender.com') || hostname === 'onrender.com') return true;
+
+    // Allow Netlify and GitHub Pages
+    if (hostname.endsWith('.netlify.app') || hostname.endsWith('.github.io')) return true;
+  } catch {
+    // Substring fallback if URL parsing fails
+    if (origin.includes('localhost') || origin.includes('.vercel.app') || origin.includes('.onrender.com')) {
+      return true;
+    }
   }
-  // Allow Render services
-  if (origin.endsWith('.onrender.com')) return true;
-  // Allow Netlify and GitHub Pages
-  if (origin.endsWith('.netlify.app') || origin.endsWith('.github.io')) return true;
-  // Allow localhost / 127.0.0.1 on any port
-  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return true;
+
   // Allow explicit FRONTEND_URL or comma-separated ALLOWED_ORIGINS
   if (env.FRONTEND_URL && origin === env.FRONTEND_URL) return true;
   if (process.env.ALLOWED_ORIGINS) {
     const list = process.env.ALLOWED_ORIGINS.split(',').map((s) => s.trim());
     if (list.includes(origin) || list.includes('*')) return true;
   }
-  // Allow all origins by default for public detection & auth operations
+
+  // Allow by default for public API operation
   return true;
 };
 
@@ -67,12 +73,29 @@ const corsOptions = {
     return callback(null, false);
   },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'],
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    'X-Requested-With',
+    'Accept',
+    'Origin',
+    'Access-Control-Request-Method',
+    'Access-Control-Request-Headers'
+  ],
+  optionsSuccessStatus: 204
 };
 
+// Mount CORS before other middlewares to handle preflight OPTIONS immediately
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+
+// Security Headers with Helmet (configured for cross-origin API access)
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' }
+  })
+);
 
 // HTTP Request Logging
 if (env.NODE_ENV !== 'test') {
