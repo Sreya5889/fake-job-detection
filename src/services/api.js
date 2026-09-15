@@ -3,7 +3,18 @@
  * Communicates with the Node.js + Express backend at http://localhost:5000/api
  */
 
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://fake-job-detection-4ezv.onrender.com/api';
+const getApiBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  // If running in browser on an HTTPS domain (e.g. Vercel, Netlify) and envUrl is localhost or missing
+  if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
+    if (!envUrl || envUrl.includes('localhost') || envUrl.includes('127.0.0.1')) {
+      return 'https://fake-job-detection-4ezv.onrender.com/api';
+    }
+  }
+  return envUrl || 'https://fake-job-detection-4ezv.onrender.com/api';
+};
+
+export const API_BASE_URL = getApiBaseUrl();
 
 /**
  * Generic Fetch wrapper with JSON parsing and Authorization header
@@ -22,10 +33,18 @@ async function request(endpoint, options = {}) {
     headers['Authorization'] = `Bearer ${token}`;
   }
 
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-    ...options,
-    headers
-  });
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      ...options,
+      headers
+    });
+  } catch (netErr) {
+    console.error(`Network fetch failed for ${endpoint}:`, netErr);
+    throw new Error(
+      'Unable to connect to the security server. If the server was idle, it may take 20-30 seconds to wake up (Render free tier). Please wait a moment and try again.'
+    );
+  }
 
   const resJson = await response.json().catch(() => ({}));
 
