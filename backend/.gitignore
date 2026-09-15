@@ -1,7 +1,4 @@
-@"
 node_modules/
 dist/
 .env
-vite.log
-vite-err.log
-"@ | Set-Content .gitignore
+*.log

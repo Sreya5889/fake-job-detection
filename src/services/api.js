@@ -4,14 +4,28 @@
  */
 
 const getApiBaseUrl = () => {
-  const envUrl = import.meta.env.VITE_API_URL;
-  // If running in browser on an HTTPS domain (e.g. Vercel, Netlify) and envUrl is localhost or missing
+  let url = import.meta.env.VITE_API_URL;
+
+  // If running in browser on an HTTPS domain (e.g. Vercel) and URL is local, relative, or missing
   if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
-    if (!envUrl || envUrl.includes('localhost') || envUrl.includes('127.0.0.1')) {
-      return 'https://fake-job-detection-4ezv.onrender.com/api';
+    if (!url || url.startsWith('/') || url.includes('localhost') || url.includes('127.0.0.1')) {
+      url = 'https://fake-job-detection-4ezv.onrender.com/api';
     }
   }
-  return envUrl || 'https://fake-job-detection-4ezv.onrender.com/api';
+
+  if (!url) {
+    url = 'https://fake-job-detection-4ezv.onrender.com/api';
+  }
+
+  // Remove any trailing slashes
+  url = url.trim().replace(/\/+$/, '');
+
+  // Guarantee /api suffix is present
+  if (!url.endsWith('/api')) {
+    url = `${url}/api`;
+  }
+
+  return url;
 };
 
 export const API_BASE_URL = getApiBaseUrl();
@@ -33,14 +47,18 @@ async function request(endpoint, options = {}) {
     headers['Authorization'] = `Bearer ${token}`;
   }
 
+  // Ensure clean endpoint path without double slashes
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const requestUrl = `${API_BASE_URL}${cleanEndpoint}`;
+
   let response;
   try {
-    response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    response = await fetch(requestUrl, {
       ...options,
       headers
     });
   } catch (netErr) {
-    console.error(`Network fetch failed for ${endpoint}:`, netErr);
+    console.error(`Network fetch failed for ${requestUrl}:`, netErr);
     throw new Error(
       'Unable to connect to the security server. If the server was idle, it may take 20-30 seconds to wake up (Render free tier). Please wait a moment and try again.'
     );
