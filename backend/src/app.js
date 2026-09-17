@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import { env } from './config/env.js';
 import { notFoundHandler, errorHandler } from './middleware/errorMiddleware.js';
+import { getSupabaseClient, isSupabaseConnected } from './config/supabase.js';
 
 // Route imports
 import authRoutes from './routes/authRoutes.js';
@@ -120,12 +121,40 @@ app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true, limit: '5mb' }));
 
 // Health Check Endpoint
-app.get('/api/health', (req, res) => {
+app.get('/api/health', async (req, res) => {
+  let dbStatus = 'disconnected';
+  let dbError = null;
+  const isConfigured = isSupabaseConnected();
+
+  if (isConfigured) {
+    try {
+      const supabase = getSupabaseClient();
+      const { error } = await supabase.from('users').select('id').limit(1);
+      if (error) {
+        dbStatus = 'error';
+        dbError = error.message;
+      } else {
+        dbStatus = 'connected';
+      }
+    } catch (err) {
+      dbStatus = 'exception';
+      dbError = err.message;
+    }
+  }
+
   return res.status(200).json({
     success: true,
     message: 'Fake Job Detection API is running',
     timestamp: new Date().toISOString(),
-    environment: env.NODE_ENV
+    environment: env.NODE_ENV,
+    supabase: {
+      configured: isConfigured,
+      hasUrl: Boolean(env.SUPABASE_URL),
+      hasServiceKey: Boolean(env.SUPABASE_SERVICE_ROLE_KEY),
+      hasAnonKey: Boolean(env.SUPABASE_ANON_KEY),
+      status: dbStatus,
+      error: dbError
+    }
   });
 });
 
