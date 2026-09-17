@@ -142,6 +142,15 @@ app.get('/api/health', async (req, res) => {
     }
   }
 
+  let dbHost = 'none';
+  try {
+    if (env.SUPABASE_URL) {
+      dbHost = new URL(env.SUPABASE_URL).hostname;
+    }
+  } catch {
+    dbHost = 'invalid';
+  }
+
   return res.status(200).json({
     success: true,
     message: 'Fake Job Detection API is running',
@@ -150,6 +159,7 @@ app.get('/api/health', async (req, res) => {
     supabase: {
       configured: isConfigured,
       hasUrl: Boolean(env.SUPABASE_URL),
+      hostname: dbHost,
       hasServiceKey: Boolean(env.SUPABASE_SERVICE_ROLE_KEY),
       hasAnonKey: Boolean(env.SUPABASE_ANON_KEY),
       status: dbStatus,

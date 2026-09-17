@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
-import { env } from './env.js';
+import { env, normalizeSupabaseUrl } from './env.js';
+import { logger } from '../utils/logger.js';
 
 let supabaseClient = null;
 
@@ -8,28 +9,48 @@ export function getSupabaseClient() {
     return supabaseClient;
   }
 
+  // Normalize URL to project origin (e.g. https://xyz.supabase.co) to avoid PGRST125 path duplication
+  const targetUrl = normalizeSupabaseUrl(env.SUPABASE_URL || process.env.SUPABASE_URL);
+  const apiKey = (env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || env.SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || '').trim().replace(/^["']|["']$/g, '');
+
+  const hasUrl = Boolean(targetUrl);
+  const hasServiceRoleKey = Boolean(env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY);
+  const hasAnonKey = Boolean(env.SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY);
+
+  let hostname = 'none';
+  try {
+    if (targetUrl) {
+      hostname = new URL(targetUrl).hostname;
+    }
+  } catch {
+    hostname = 'invalid-url';
+  }
+
   const isConfigured = Boolean(
-    env.SUPABASE_URL &&
-    !env.SUPABASE_URL.includes('placeholder') &&
-    (env.SUPABASE_SERVICE_ROLE_KEY || env.SUPABASE_ANON_KEY) &&
-    !env.SUPABASE_SERVICE_ROLE_KEY.includes('placeholder')
+    targetUrl &&
+    !targetUrl.includes('placeholder') &&
+    apiKey &&
+    !apiKey.includes('placeholder')
+  );
+
+  // Safe diagnostic log without exposing secret keys
+  logger.info(
+    `[SUPABASE] URL exists: ${hasUrl}, host: ${hostname}, service_role_key exists: ${hasServiceRoleKey}, anon_key exists: ${hasAnonKey}, configured: ${isConfigured}`
   );
 
   if (!isConfigured) {
-    // Return dummy or null client when unconfigured
+    logger.warn('[SUPABASE] Credentials not configured or using placeholders. Client not created.');
     return null;
   }
 
-  // Use the service-role key on the backend to allow administrative queries
-  const apiKey = env.SUPABASE_SERVICE_ROLE_KEY || env.SUPABASE_ANON_KEY;
-
-  supabaseClient = createClient(env.SUPABASE_URL, apiKey, {
+  supabaseClient = createClient(targetUrl, apiKey, {
     auth: {
       persistSession: false,
       autoRefreshToken: false
     }
   });
 
+  logger.info(`[SUPABASE] Client created successfully for host: ${hostname}`);
   return supabaseClient;
 }
 
