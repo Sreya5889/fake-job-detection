@@ -14,7 +14,9 @@ const getApiBaseUrl = () => {
   }
 
   if (!url) {
-    url = 'https://fake-job-detection-4ezv.onrender.com/api';
+    url = (typeof window !== 'undefined' && window.location.protocol === 'http:')
+      ? 'http://localhost:5000/api'
+      : 'https://fake-job-detection-4ezv.onrender.com/api';
   }
 
   // Remove any trailing slashes
@@ -67,12 +69,15 @@ async function request(endpoint, options = {}) {
   const resJson = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    let errorMsg = resJson.message || resJson.error;
-    if (!errorMsg && resJson.errors) {
+    let fieldErrors = '';
+    if (resJson.errors) {
       if (typeof resJson.errors === 'object') {
-        errorMsg = Object.values(resJson.errors).join(', ');
+        fieldErrors = Object.values(resJson.errors).filter(Boolean).join(', ');
+      } else if (typeof resJson.errors === 'string') {
+        fieldErrors = resJson.errors;
       }
     }
+    const errorMsg = fieldErrors || resJson.message || resJson.error;
     throw new Error(errorMsg || `Request failed with status ${response.status}`);
   }
 
@@ -100,11 +105,6 @@ export async function loginUser(email, password) {
   });
 }
 
-export async function loginDemo() {
-  return await request('/auth/demo', {
-    method: 'POST'
-  });
-}
 
 export async function logoutUser() {
   localStorage.removeItem('token');

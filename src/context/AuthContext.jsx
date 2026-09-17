@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import {
   loginUser,
-  loginDemo as apiLoginDemo,
   registerUser,
   logoutUser,
   getCurrentUser,
@@ -57,17 +56,6 @@ export function AuthProvider({ children }) {
     return authData;
   };
 
-  const handleLoginDemo = async () => {
-    const res = await apiLoginDemo();
-    const authData = res?.data || res;
-    if (authData?.user && authData?.token) {
-      setUser(authData.user);
-      setToken(authData.token);
-      localStorage.setItem('token', authData.token);
-    }
-    return authData;
-  };
-
   const handleRegister = async (userData) => {
     const res = await registerUser(userData);
     const authData = res?.data || res;
@@ -103,7 +91,6 @@ export function AuthProvider({ children }) {
     isAuthenticated: Boolean(user && token),
     loading,
     login: handleLogin,
-    loginDemo: handleLoginDemo,
     register: handleRegister,
     logout: handleLogout,
     updateProfile: handleUpdateProfile

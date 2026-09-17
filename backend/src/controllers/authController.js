@@ -1,4 +1,4 @@
-import { registerUser, loginUser, getUserById, getOrCreateDemoUser } from '../services/authService.js';
+import { registerUser, loginUser, getUserById } from '../services/authService.js';
 import { validateRegisterInput, validateLoginInput } from '../validators/authValidator.js';
 import { successResponse, errorResponse } from '../utils/response.js';
 
@@ -29,7 +29,8 @@ export async function login(req, res, next) {
       return errorResponse(res, 'Validation error during login.', 400, errors);
     }
 
-    const { email, password } = req.body;
+    const email = req.body.email || req.body.username || req.body.identifier;
+    const { password } = req.body;
     const { user, token } = await loginUser(email, password);
 
     return successResponse(
@@ -42,18 +43,6 @@ export async function login(req, res, next) {
   }
 }
 
-export async function demoLogin(req, res, next) {
-  try {
-    const { user, token } = await getOrCreateDemoUser();
-    return successResponse(
-      res,
-      { user, token },
-      'Logged in with demo account successfully'
-    );
-  } catch (err) {
-    next(err);
-  }
-}
 
 export async function getMe(req, res, next) {
   try {

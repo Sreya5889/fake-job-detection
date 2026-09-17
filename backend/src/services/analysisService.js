@@ -80,28 +80,51 @@ export async function saveAnalysis(userId, analysisData) {
   } = analysisData;
 
   if (supabase) {
-    // 1. Insert into Supabase analyses table
-    const { data: analysisRecord, error: analysisError } = await supabase
-      .from('analyses')
-      .insert([
-        {
-          user_id: userId,
-          input_type,
-          input_text,
-          input_url,
-          image_path,
-          transcription,
-          trust_score,
-          risk_level,
-          prediction,
-          explanation
-        }
-      ])
-      .select()
-      .single();
+    let analysisRecord = null;
+    let analysisError = null;
 
-    if (analysisError) {
-      logger.error('Failed to save analysis in Supabase:', analysisError);
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      const result = await supabase
+        .from('analyses')
+        .insert([
+          {
+            user_id: userId,
+            input_type,
+            input_text,
+            input_url,
+            image_path,
+            transcription,
+            trust_score,
+            risk_level,
+            prediction,
+            explanation
+          }
+        ])
+        .select()
+        .single();
+
+      if (!result.error) {
+        analysisRecord = result.data;
+        analysisError = null;
+        break;
+      }
+
+      analysisError = result.error;
+
+      // Do not retry permanent schema / validation errors
+      const permanentSqlErrors = ['23505', '23503', '23502', '22P02', '22001', '42P01'];
+      if (analysisError.code && permanentSqlErrors.includes(analysisError.code)) {
+        break;
+      }
+
+      logger.warn(`[SUPABASE] saveAnalysis attempt ${attempt} failed: ${analysisError.message || 'network timeout'}. Retrying...`);
+      if (attempt < 3) {
+        await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+      }
+    }
+
+    if (analysisError || !analysisRecord) {
+      logger.error('Failed to save analysis in Supabase after retries:', analysisError);
       const err = new Error('Database operation failed while saving analysis.');
       err.statusCode = 500;
       throw err;

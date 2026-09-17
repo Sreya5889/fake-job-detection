@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import Tesseract from 'tesseract.js';
 import { analyzeJob } from './detectorService.js';
+import { calculateTrustScore, classifyRisk } from '../utils/trustScore.js';
 import { logger } from '../utils/logger.js';
 
 /**

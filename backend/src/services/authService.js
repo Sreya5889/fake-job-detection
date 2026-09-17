@@ -3,17 +3,7 @@ import jwt from 'jsonwebtoken';
 import { getSupabaseClient } from '../config/supabase.js';
 import { env } from '../config/env.js';
 import { logger } from '../utils/logger.js';
-import { readLocalJson, writeLocalJson } from '../utils/localStore.js';
 
-// Local storage when Supabase cloud database credentials are not yet configured in .env
-function getLocalUsers() {
-  const list = readLocalJson('users.json', []);
-  return new Map(list.map((u) => [u.email, u]));
-}
-
-function saveLocalUsers(map) {
-  writeLocalJson('users.json', Array.from(map.values()));
-}
 
 /**
  * Hash plain text password using bcrypt
@@ -48,7 +38,7 @@ export function generateToken(user) {
 }
 
 /**
- * Register a new user in Supabase PostgreSQL (or local dev store if unconfigured)
+ * Register a new user in Supabase PostgreSQL
  */
 export async function registerUser(input = {}) {
   const displayName = (input.name || input.full_name || '').trim();
@@ -57,130 +47,54 @@ export async function registerUser(input = {}) {
   const passwordHash = await hashPassword(password);
   const supabase = getSupabaseClient();
 
-  if (supabase) {
-    // 1. Check if user exists in Supabase
-    const { data: existingUser, error: checkError } = await supabase
-      .from('users')
-      .select('id')
-      .eq('email', normalizedEmail)
-      .maybeSingle();
-
-    if (checkError && checkError.code !== 'PGRST116') {
-      logger.error('Supabase user check error:', checkError);
-      const err = new Error('Database operation failed.');
-      err.statusCode = 500;
-      throw err;
-    }
-
-    if (existingUser) {
-      const err = new Error('An account with this email address already exists.');
-      err.statusCode = 409;
-      throw err;
-    }
-
-    // 2. Insert new user record into Supabase PostgreSQL
-    const { data: newUser, error: insertError } = await supabase
-      .from('users')
-      .insert([
-        {
-          name: displayName || 'User',
-          email: normalizedEmail,
-          password_hash: passwordHash
-        }
-      ])
-      .select('id, name, email, created_at')
-      .single();
-
-    if (insertError) {
-      logger.error('Supabase user insert error:', insertError);
-      const err = new Error('Database operation failed: Failed to create user account.');
-      err.statusCode = 500;
-      throw err;
-    }
-
-    const token = generateToken(newUser);
-    return { user: newUser, token };
+  if (!supabase) {
+    const err = new Error('Database service unavailable.');
+    err.statusCode = 500;
+    throw err;
   }
 
-  // Development local fallback when Supabase credentials are placeholder in .env
-  const localUsers = getLocalUsers();
-  if (localUsers.has(normalizedEmail)) {
+  // 1. Check if user exists in Supabase
+  const { data: existingUser, error: checkError } = await supabase
+    .from('users')
+    .select('id')
+    .eq('email', normalizedEmail)
+    .maybeSingle();
+
+  if (checkError && checkError.code !== 'PGRST116') {
+    logger.error('Supabase user check error:', checkError);
+    const err = new Error('Database operation failed.');
+    err.statusCode = 500;
+    throw err;
+  }
+
+  if (existingUser) {
     const err = new Error('An account with this email address already exists.');
     err.statusCode = 409;
     throw err;
   }
 
-  const devUser = {
-    id: `usr_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
-    name: displayName || 'User',
-    email: normalizedEmail,
-    password_hash: passwordHash,
-    created_at: new Date().toISOString()
-  };
+  // 2. Insert new user record into Supabase PostgreSQL
+  const { data: newUser, error: insertError } = await supabase
+    .from('users')
+    .insert([
+      {
+        name: displayName || 'User',
+        email: normalizedEmail,
+        password_hash: passwordHash
+      }
+    ])
+    .select('id, name, email, created_at')
+    .single();
 
-  localUsers.set(normalizedEmail, devUser);
-  saveLocalUsers(localUsers);
-  const token = generateToken(devUser);
-  const { password_hash, ...safeUser } = devUser;
-  return { user: safeUser, token };
-}
-
-/**
- * Get or create default demo account
- */
-export async function getOrCreateDemoUser() {
-  const normalizedEmail = 'demo@fakejobdetect.com';
-  const supabase = getSupabaseClient();
-
-  if (supabase) {
-    const { data: existingUser } = await supabase
-      .from('users')
-      .select('id, name, email, created_at')
-      .eq('email', normalizedEmail)
-      .maybeSingle();
-
-    if (existingUser) {
-      const token = generateToken(existingUser);
-      return { user: existingUser, token };
-    }
-
-    const passwordHash = await hashPassword('Demo1234!');
-    const { data: newUser, error: insertError } = await supabase
-      .from('users')
-      .insert([
-        {
-          name: 'Demo User',
-          email: normalizedEmail,
-          password_hash: passwordHash
-        }
-      ])
-      .select('id, name, email, created_at')
-      .single();
-
-    if (!insertError && newUser) {
-      const token = generateToken(newUser);
-      return { user: newUser, token };
-    }
+  if (insertError) {
+    logger.error('Supabase user insert error:', insertError);
+    const err = new Error('Database operation failed: Failed to create user account.');
+    err.statusCode = 500;
+    throw err;
   }
 
-  const localUsers = getLocalUsers();
-  let userRecord = localUsers.get(normalizedEmail);
-  if (!userRecord) {
-    const passwordHash = await hashPassword('Demo1234!');
-    userRecord = {
-      id: 'usr_demo_default_101',
-      name: 'Demo User',
-      email: normalizedEmail,
-      password_hash: passwordHash,
-      created_at: new Date().toISOString()
-    };
-    localUsers.set(normalizedEmail, userRecord);
-    saveLocalUsers(localUsers);
-  }
-
-  const token = generateToken(userRecord);
-  const { password_hash, ...safeUser } = userRecord;
-  return { user: safeUser, token };
+  const token = generateToken(newUser);
+  return { user: newUser, token };
 }
 
 /**
@@ -188,49 +102,62 @@ export async function getOrCreateDemoUser() {
  */
 export async function loginUser(email, password) {
   const normalizedEmail = email.trim().toLowerCase();
-
-  // Instant demo login bypass
-  if (normalizedEmail === 'demo@fakejobdetect.com') {
-    return await getOrCreateDemoUser();
-  }
-
   const supabase = getSupabaseClient();
 
-  let userRecord = null;
+  if (!supabase) {
+    const err = new Error('Database service unavailable.');
+    err.statusCode = 500;
+    throw err;
+  }
 
-  if (supabase) {
-    const { data, error } = await supabase
-      .from('users')
-      .select('id, name, email, password_hash, created_at')
-      .eq('email', normalizedEmail)
-      .maybeSingle();
+  const { data: userRecord, error } = await supabase
+    .from('users')
+    .select('id, name, email, password_hash, created_at')
+    .eq('email', normalizedEmail)
+    .maybeSingle();
 
-    if (error) {
-      logger.error('Supabase user login lookup error:', error);
-      const err = new Error('Database operation failed.');
-      err.statusCode = 500;
-      throw err;
-    }
-
-    userRecord = data;
-  } else {
-    const localUsers = getLocalUsers();
-    userRecord = localUsers.get(normalizedEmail) || null;
+  if (error) {
+    logger.error('Supabase user login lookup error:', error);
+    const err = new Error('Database operation failed.');
+    err.statusCode = 500;
+    throw err;
   }
 
   if (!userRecord) {
+    logger.warn(`[AUTH] Login failed: User not found for email: ${normalizedEmail}`);
     const err = new Error('Invalid email or password.');
     err.statusCode = 401;
     throw err;
   }
 
-  const isPasswordValid = await comparePassword(password, userRecord.password_hash);
+  logger.info(`[AUTH] User found in Supabase (${userRecord.id}). Verifying credentials...`);
+
+  // Handle password comparison & incompatible / legacy format migration
+  let isPasswordValid = false;
+  const storedHash = userRecord.password_hash || '';
+
+  if (storedHash.startsWith('$2a$') || storedHash.startsWith('$2b$') || storedHash.startsWith('$2y$')) {
+    isPasswordValid = await comparePassword(password, storedHash);
+  } else if (storedHash === password) {
+    // Legacy plain-text password detected: automatically migrate to salted bcrypt hash
+    logger.info(`[AUTH] Migrating legacy plain-text password to salted bcrypt hash for user ID: ${userRecord.id}`);
+    const newHash = await hashPassword(password);
+    await supabase.from('users').update({ password_hash: newHash }).eq('id', userRecord.id);
+    userRecord.password_hash = newHash;
+    isPasswordValid = true;
+  } else {
+    logger.warn(`[AUTH] Incompatible password format detected for user ID: ${userRecord.id}`);
+    isPasswordValid = false;
+  }
+
   if (!isPasswordValid) {
+    logger.warn(`[AUTH] Login failed: Incorrect password for user: ${normalizedEmail}`);
     const err = new Error('Invalid email or password.');
     err.statusCode = 401;
     throw err;
   }
 
+  logger.info(`[AUTH] Password verified successfully for user: ${normalizedEmail}. Issuing JWT...`);
   const token = generateToken(userRecord);
   const { password_hash, ...safeUser } = userRecord;
 
@@ -243,31 +170,25 @@ export async function loginUser(email, password) {
 export async function getUserById(userId) {
   const supabase = getSupabaseClient();
 
-  if (supabase) {
-    const { data, error } = await supabase
-      .from('users')
-      .select('id, name, email, created_at, updated_at')
-      .eq('id', userId)
-      .maybeSingle();
-
-    if (error) {
-      logger.error('Supabase getUserById error:', error);
-      const err = new Error('Database operation failed.');
-      err.statusCode = 500;
-      throw err;
-    }
-    return data;
+  if (!supabase) {
+    const err = new Error('Database service unavailable.');
+    err.statusCode = 500;
+    throw err;
   }
 
-  const localUsers = getLocalUsers();
-  for (const user of localUsers.values()) {
-    if (user.id === userId) {
-      const { password_hash, ...safeUser } = user;
-      return safeUser;
-    }
-  }
+  const { data, error } = await supabase
+    .from('users')
+    .select('id, name, email, created_at, updated_at')
+    .eq('id', userId)
+    .maybeSingle();
 
-  return null;
+  if (error) {
+    logger.error('Supabase getUserById error:', error);
+    const err = new Error('Database operation failed.');
+    err.statusCode = 500;
+    throw err;
+  }
+  return data;
 }
 
 /**
@@ -276,43 +197,29 @@ export async function getUserById(userId) {
 export async function updateUserProfile(userId, { name, email }) {
   const supabase = getSupabaseClient();
 
+  if (!supabase) {
+    const err = new Error('Database service unavailable.');
+    err.statusCode = 500;
+    throw err;
+  }
+
   const updates = {};
   if (name) updates.name = name.trim();
   if (email) updates.email = email.trim().toLowerCase();
   updates.updated_at = new Date().toISOString();
 
-  if (supabase) {
-    const { data, error } = await supabase
-      .from('users')
-      .update(updates)
-      .eq('id', userId)
-      .select('id, name, email, created_at, updated_at')
-      .single();
+  const { data, error } = await supabase
+    .from('users')
+    .update(updates)
+    .eq('id', userId)
+    .select('id, name, email, created_at, updated_at')
+    .single();
 
-    if (error) {
-      logger.error('Supabase updateUserProfile error:', error);
-      const err = new Error('Database operation failed.');
-      err.statusCode = 500;
-      throw err;
-    }
-    return data;
+  if (error) {
+    logger.error('Supabase updateUserProfile error:', error);
+    const err = new Error('Database operation failed.');
+    err.statusCode = 500;
+    throw err;
   }
-
-  const localUsers = getLocalUsers();
-  for (const [key, user] of localUsers.entries()) {
-    if (user.id === userId) {
-      if (updates.name) user.name = updates.name;
-      if (updates.email && updates.email !== key) {
-        localUsers.delete(key);
-        user.email = updates.email;
-        localUsers.set(updates.email, user);
-      }
-      user.updated_at = new Date().toISOString();
-      saveLocalUsers(localUsers);
-      const { password_hash, ...safeUser } = user;
-      return safeUser;
-    }
-  }
-
-  return null;
+  return data;
 }

@@ -29,7 +29,9 @@ export function validateRegisterInput(body = {}) {
   };
 }
 
-export function validateLoginInput({ email, password }) {
+export function validateLoginInput(body = {}) {
+  const email = body.email || body.username || body.identifier;
+  const password = body.password;
   const errors = {};
 
   if (!email || typeof email !== 'string' || validator.isEmpty(email.trim())) {

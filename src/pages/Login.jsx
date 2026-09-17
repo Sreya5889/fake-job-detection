@@ -43,12 +43,12 @@ export default function Login() {
 
     try {
       setLoading(true);
-      await login(email, password);
+      await login(email.trim(), password);
       addToast('Welcome back! Authentication successful.', 'success');
       navigate(redirectPath, { replace: true });
     } catch (err) {
       console.error('Login error:', err);
-      setError(err.message || 'Invalid credentials or server unavailable.');
+      setError(err.message || 'Invalid email or password.');
     } finally {
       setLoading(false);
     }

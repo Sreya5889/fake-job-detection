@@ -34,46 +34,5 @@ export function requireAuth(req, res, next) {
   }
 }
 
-/**
- * Optional authentication: allows unauthenticated guests to run scans
- */
-export function optionalAuth(req, res, next) {
-  const authHeader = req.headers.authorization;
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    req.user = {
-      id: 'usr_guest_demo',
-      email: 'guest@fakejobdetect.com',
-      name: 'Guest User'
-    };
-    return next();
-  }
-
-  const token = authHeader.split(' ')[1];
-  if (!token) {
-    req.user = {
-      id: 'usr_guest_demo',
-      email: 'guest@fakejobdetect.com',
-      name: 'Guest User'
-    };
-    return next();
-  }
-
-  try {
-    const decoded = jwt.verify(token, env.JWT_SECRET);
-    req.user = {
-      id: decoded.id,
-      email: decoded.email,
-      name: decoded.name
-    };
-    next();
-  } catch {
-    req.user = {
-      id: 'usr_guest_demo',
-      email: 'guest@fakejobdetect.com',
-      name: 'Guest User'
-    };
-    next();
-  }
-}
 
